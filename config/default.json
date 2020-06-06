@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://rajat:Rajat123@devnetwork-hvs4q.mongodb.net/devnetwork?retryWrites=true&w=majority"
+    "mongoURI": "mongodb+srv://rajat:Rajat123@devnetwork-hvs4q.mongodb.net/devnetwork?retryWrites=true&w=majority",
+    "jwtSecret": "&*^%%^#$*&684684689Dgdyweuyg8&8979"
 }
