@@ -1,7 +1,7 @@
 
 # Dev Network:
 <p align="center">
-  <img src="https://raw.github.com/rajatmangal/DevNetwork/master/logo.png">
+  <img src="https://i.ibb.co/K0xmxfR/logo.png">
 </p>
 
 ## Basic Idea:
