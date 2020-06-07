@@ -1,7 +1,7 @@
 
 # Dev Network:
 <p align="center">
-  <img src="https://raw.github.com/rajatmangal/quikride/master/logo.png">
+  <img src="https://raw.github.com/rajatmangal/DevNetwork/master/logo.png">
 </p>
 
 ## Basic Idea:
