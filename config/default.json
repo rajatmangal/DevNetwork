@@ -1,4 +1,6 @@
 {
     "mongoURI": "mongodb+srv://rajat:Rajat123@devnetwork-hvs4q.mongodb.net/devnetwork?retryWrites=true&w=majority",
-    "jwtSecret": "&*^%%^#$*&684684689Dgdyweuyg8&8979"
+    "jwtSecret": "&*^%%^#$*&684684689Dgdyweuyg8&8979",
+    "githubClientID": "86bc524b9cd6a7982881",
+    "githubSecret": "3a8f373dc89017482b89c82286751f0963768712"
 }
