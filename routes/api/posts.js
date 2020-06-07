@@ -160,4 +160,64 @@ router.put('/unlike/:id', auth, async (req, res) => {
     }
 });
 
+//@route POST api/posts/comment/:id
+//@desc Create a Comment on a Post
+//@access Protected
+router.post('/comment/:id', [auth, [
+    check('text', 'Text is Required.').not().isEmpty()
+]], async (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).send({
+            errors: errors.array()
+        });
+    }
+
+    try {
+        const user = await Users.findById(req.user.id).select('-password');
+        const post = await Posts.findById(req.params.id);
+        const newComment = {
+            text: req.body.text,
+            name: user.name,
+            avatar: user.avatar,
+            user: req.user.id
+        };
+        post.comments.unshift(newComment);
+        await post.save();
+        res.json(post.comments);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Server Error");
+    }
+});
+
+//@route Delete api/posts/comment/:id/:comment_id
+//@desc Delete a Comment on a Post
+//@access Protected
+router.delete('/comment/:id/:comment_id', auth, async (req, res) => {
+    try {
+        const user = await Users.findById(req.user.id).select('-password');
+        const post = await Posts.findById(req.params.id);
+        const comment = post.comments.find(comment => comment.id === req.params.comment_id);
+        if (!comment) {
+            return res.status(404).json({
+                msg: "Comment not found"
+            });
+        }
+
+        if (comment.user.toString() !== req.user.id) {
+            return res.status(404).json({
+                msg: "User not Authorized"
+            });
+        }
+
+        const removeIndex = post.comments.map(comment => comment.user.toString().indexOf(req.user.id));
+        post.comments.splice(removeIndex, 1);
+        await post.save();
+        res.json(post.comments);
+    } catch (err) {
+        console.log(err);
+        res.status(500).send("Server Error");
+    }
+});
 module.exports = router;
